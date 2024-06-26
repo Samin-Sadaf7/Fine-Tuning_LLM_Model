@@ -36,7 +36,7 @@ def response(request):
                 prompt = get_answer_prompt(actual_answer=actual_answer, question=question, answer=student_answer)
                 feedback = generate_by_Gemini(prompt=prompt)
                 response_message = f"Received: {data.get('message', '')}"
-                return JsonResponse({'response': response_message, 'feedback': feedback})
+                return JsonResponse({'response': response_message, 'feedback': feedback}, status=200)
             else:
                 return JsonResponse({'error': 'Missing one or more required fields'}, status=400)
                 
